@@ -1,3 +1,6 @@
 [submodule "vendor/qunit"]
 	path = vendor/qunit
 	url = https://github.com/jquery/qunit.git
+[submodule "vendor/jqtouch"]
+	path = vendor/jqtouch
+	url = https://github.com/senchalabs/jQTouch.git
