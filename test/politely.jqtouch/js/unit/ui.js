@@ -8,6 +8,8 @@ please.test(function() {
               .waitForEvent('#ui', 'pageAnimationEnd')
               .waitForVisible('#ui')
               .waitForNotVisible('#home')
+              .click('#ui a.back')
+              .waitForEvent('#ui', 'pageAnimationEnd')
               .now();
     });
 
@@ -17,6 +19,8 @@ please.test(function() {
               .waitForEvent('#edge', 'pageAnimationEnd')
               .waitForVisible('#edge')
               .waitForNotVisible('#ui')
+              .click('#edge a.back')
+              .waitForEvent('#edge', 'pageAnimationEnd')
               .now();
     });
 

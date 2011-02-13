@@ -8,6 +8,10 @@ please.test(function() {
               .waitForEvent('#about', 'pageAnimationEnd')
               .waitForVisible('#about')
               .waitForNotVisible('#home')
+              .click('#about a.goback')
+              .waitForEvent('#about', 'pageAnimationEnd')
+              .waitForVisible('#home')
+              .waitForNotVisible('#about')
               .now();
     });
     
