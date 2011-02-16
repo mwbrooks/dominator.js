@@ -1,7 +1,7 @@
 (function() {
     window.addEventListener('load', function() {
         var iframe = document.createElement('iframe');
-        iframe.setAttribute('src',         '../../vendor/jqtouch/demos/main/index.html');
+        iframe.setAttribute('src',         '../vendor/jqtouch/demos/main/index.html');
         iframe.setAttribute('id',          'app');
         iframe.setAttribute('name',        'app');
         iframe.setAttribute('width',       '320');
