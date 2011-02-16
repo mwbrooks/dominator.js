@@ -27,6 +27,21 @@ please.test(function() {
               .now();
     });
 
+    test('should implicitly wait for each page to open', function() {
+        please.open('#home')
+              .open('#ui')
+              .open('#callbacks')
+              .now();
+    });
+
+    test('can open the same page multiple times', function() {
+        please.open('#home')
+              .open('#home')
+              .open('#home')
+              .waitForPage('#home')
+              .now();
+    });
+
     module('click');
 
     test('should fire click event', function() {
