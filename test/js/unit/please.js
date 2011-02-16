@@ -43,6 +43,12 @@ please.test(function() {
               .now();
     });
 
+    test('can be the last action', function() {
+        please.open('#home')
+              .click('#home a[href=#ui]')
+              .now();
+    });
+
     module('waitForEvent');
 
     test('should fire a click event', function() {
