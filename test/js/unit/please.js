@@ -45,8 +45,8 @@ please.test(function() {
 
     test('should fire click event', function() {
         please.open('#home')
-              .click('#home a[href=#ui]')
-              .waitForEvent('#home a[href=#ui]', 'click')
+              .click('#home a[href="#ui"]')
+              .waitForEvent('#home a[href="#ui"]', 'click')
               .now();
     });
 
