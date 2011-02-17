@@ -98,7 +98,7 @@ please.test(function() {
 
     test('should wait until UI page is shown', function() {
         please.open('#home')
-              .click('#home a[href=#ui]')
+              .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .now();
     });
