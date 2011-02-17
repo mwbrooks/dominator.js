@@ -77,7 +77,7 @@ please.test(function() {
 
     test('should wait until back button is visible', function() {
         please.open('#home')
-              .click('#home a[href=#ui]')
+              .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .waitForVisible('#ui a.back')
               .now();
@@ -88,7 +88,7 @@ please.test(function() {
     test('should wait until About button is not visible', function() {
         please.open('#home')
               .waitForVisible('#infoButton')
-              .click('#home a[href=#ui]')
+              .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .waitForNotVisible('#infoButton')
               .now();
