@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=1.0;" />
+
+  <link rel="stylesheet" type="text/css" href="../vendor/qunit/qunit/qunit.css" />
+
+  <!-- test framework -->
+  <script type="text/javascript" src="../vendor/qunit/qunit/qunit.js"></script>
+
+  <!-- source to test -->
+  <script type="text/javascript" src="../lib/please.js"></script>
+  <script type="text/javascript" src="../lib/please.default.js"></script>
+
+  <!-- fixtures -->
+  <script type="text/javascript">
+    window.iframe = document.createElement('iframe');
+    iframe.setAttribute('src',         'default/index.html');
+    iframe.setAttribute('id',          'app');
+    iframe.setAttribute('name',        'app');
+    iframe.setAttribute('width',       '320');
+    iframe.setAttribute('height',      '480');
+    iframe.setAttribute('scrolling',   'auto');
+    iframe.setAttribute('frameborder', '0');
+  </script>
+  <script type="text/javascript" src="js/runner.js"></script>
+
+  <!-- tests -->
+  <script type="text/javascript" src="js/unit/please.js"></script>
+
+  <title>Please Spec</title>
+</head>
+<body>
+  <h1 id="qunit-header">Please Spec</h1>
+  <h2 id="qunit-banner"></h2>
+  <div id="qunit-testrunner-toolbar"></div>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">
+    <!-- Populated dynamically -->
+  </div>
+</body>
+</html>
