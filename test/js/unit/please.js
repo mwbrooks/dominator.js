@@ -9,7 +9,6 @@ please.test(function() {
     });
 
     test('should open a sub-page', function() {
-        console.log('#2');
         please.open('#ui')
               .waitForPage('#ui')
               .now();
