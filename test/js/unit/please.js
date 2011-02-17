@@ -52,14 +52,14 @@ please.test(function() {
 
     test('should navigate to a page', function() {
         please.open('#home')
-              .click('#home a[href=#ui]')
+              .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .now();
     });
 
     test('can be the last action', function() {
         please.open('#home')
-              .click('#home a[href=#ui]')
+              .click('#home a[href="#ui"]')
               .now();
     });
 
