@@ -24,6 +24,8 @@
     }, false);
 
     document.addEventListener('appready', function() {
+        document.removeEventListener('appready', arguments.callee, false);
+
         please.config.window = document.getElementById('app').contentWindow;
         please.test();
     }, false);
