@@ -1,21 +1,21 @@
-please.test(function() {
+dominator.test(function() {
 
     module('open');
 
     test('should open first page', function() {
-        please.open('#home')
+        dominator.open('#home')
               .waitForPage('#home')
               .now();
     });
 
     test('should open a sub-page', function() {
-        please.open('#ui')
+        dominator.open('#ui')
               .waitForPage('#ui')
               .now();
     });
 
     test('should open many pages', function() {
-        please.open('#home')
+        dominator.open('#home')
               .waitForPage('#home')
               .open('#ui')
               .waitForPage('#ui')
@@ -27,14 +27,14 @@ please.test(function() {
     });
 
     test('should implicitly wait for each page to open', function() {
-        please.open('#home')
+        dominator.open('#home')
               .open('#ui')
               .open('#callbacks')
               .now();
     });
 
     test('can open the same page multiple times', function() {
-        please.open('#home')
+        dominator.open('#home')
               .open('#home')
               .open('#home')
               .waitForPage('#home')
@@ -44,21 +44,21 @@ please.test(function() {
     module('click');
 
     test('should fire click event', function() {
-        please.open('#home')
+        dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForEvent('#home a[href="#ui"]', 'click')
               .now();
     });
 
     test('should navigate to a page', function() {
-        please.open('#home')
+        dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .now();
     });
 
     test('can be the last action', function() {
-        please.open('#home')
+        dominator.open('#home')
               .click('#home a[href="#ui"]')
               .now();
     });
@@ -66,7 +66,7 @@ please.test(function() {
     module('waitForEvent');
 
     test('should fire a click event', function() {
-        please.open('#home')
+        dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForEvent('#home a[href="#ui"]', 'click')
               .waitForPage('#ui')
@@ -76,7 +76,7 @@ please.test(function() {
     module('waitForVisible');
 
     test('should wait until back button is visible', function() {
-        please.open('#home')
+        dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .waitForVisible('#ui a.back')
@@ -86,7 +86,7 @@ please.test(function() {
     module('waitForNotVisible');
 
     test('should wait until About button is not visible', function() {
-        please.open('#home')
+        dominator.open('#home')
               .waitForVisible('#infoButton')
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
@@ -97,7 +97,7 @@ please.test(function() {
     module('waitForPage');
 
     test('should wait until UI page is shown', function() {
-        please.open('#home')
+        dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .now();
