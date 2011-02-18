@@ -5,13 +5,13 @@ dominator.test(function() {
     test('should open first page', function() {
         dominator.open('#home')
               .waitForPage('#home')
-              .now();
+              .destroy();
     });
 
     test('should open a sub-page', function() {
         dominator.open('#ui')
               .waitForPage('#ui')
-              .now();
+              .destroy();
     });
 
     test('should open many pages', function() {
@@ -23,14 +23,14 @@ dominator.test(function() {
               .waitForPage('#callbacks')
               .open('#home')
               .waitForPage('#home')
-              .now();
+              .destroy();
     });
 
     test('should implicitly wait for each page to open', function() {
         dominator.open('#home')
               .open('#ui')
               .open('#callbacks')
-              .now();
+              .destroy();
     });
 
     test('can open the same page multiple times', function() {
@@ -38,7 +38,7 @@ dominator.test(function() {
               .open('#home')
               .open('#home')
               .waitForPage('#home')
-              .now();
+              .destroy();
     });
 
     module('click');
@@ -47,20 +47,20 @@ dominator.test(function() {
         dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForEvent('#home a[href="#ui"]', 'click')
-              .now();
+              .destroy();
     });
 
     test('should navigate to a page', function() {
         dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
-              .now();
+              .destroy();
     });
 
     test('can be the last action', function() {
         dominator.open('#home')
               .click('#home a[href="#ui"]')
-              .now();
+              .destroy();
     });
 
     module('waitForEvent');
@@ -70,7 +70,7 @@ dominator.test(function() {
               .click('#home a[href="#ui"]')
               .waitForEvent('#home a[href="#ui"]', 'click')
               .waitForPage('#ui')
-              .now();
+              .destroy();
     });
 
     module('waitForVisible');
@@ -80,7 +80,7 @@ dominator.test(function() {
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .waitForVisible('#ui a.back')
-              .now();
+              .destroy();
     });
 
     module('waitForNotVisible');
@@ -91,7 +91,7 @@ dominator.test(function() {
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
               .waitForNotVisible('#infoButton')
-              .now();
+              .destroy();
     });
 
     module('waitForPage');
@@ -100,6 +100,6 @@ dominator.test(function() {
         dominator.open('#home')
               .click('#home a[href="#ui"]')
               .waitForPage('#ui')
-              .now();
+              .destroy();
     });
 });
