@@ -5,14 +5,12 @@
 
   <link rel="stylesheet" type="text/css" href="../vendor/qunit/qunit/qunit.css" />
 
-  <!-- test framework -->
+  <!-- test framework (load qUnit first) -->
   <script type="text/javascript" src="../vendor/qunit/qunit/qunit.js"></script>
-
-  <!-- source to test -->
   <script type="text/javascript" src="../lib/dominator.js"></script>
   <script type="text/javascript" src="../lib/dominator.default.js"></script>
 
-  <!-- fixtures -->
+  <!-- application to test -->
   <script type="text/javascript">
     window.iframe = document.createElement('iframe');
     iframe.setAttribute('src',         'default/index.html');
@@ -28,16 +26,16 @@
   <!-- tests -->
   <script type="text/javascript" src="js/unit/dominator.js"></script>
 
-  <title>Dominator Spec</title>
+  <title>Dominator Default Spec</title>
 </head>
 <body>
-  <h1 id="qunit-header">Dominator Spec</h1>
+  <h1 id="qunit-header">Dominator Default Spec</h1>
   <h2 id="qunit-banner"></h2>
   <div id="qunit-testrunner-toolbar"></div>
   <h2 id="qunit-userAgent"></h2>
   <ol id="qunit-tests"></ol>
   <div id="qunit-fixture">
-    <!-- Populated dynamically -->
+    <!-- populated dynamically -->
   </div>
 </body>
 </html>
