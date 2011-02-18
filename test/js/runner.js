@@ -2,7 +2,6 @@
 
     window.addEventListener('load', function() {
         if (typeof window.iframe === 'undefined') {
-            console.log('hmm');
             window.iframe = document.createElement('iframe');
             iframe.setAttribute('src',         '../vendor/jqtouch/demos/main/index.html');
             iframe.setAttribute('id',          'app');
