@@ -9,19 +9,20 @@
   <script type="text/javascript" src="../vendor/qunit/qunit/qunit.js"></script>
   <script type="text/javascript" src="../lib/dominator.js"></script>
   <script type="text/javascript" src="../lib/dominator.default.js"></script>
+  <script type="text/javascript" src="../lib/dominator.loader.js"></script>
 
-  <!-- application to test -->
+  <!-- load application to test -->
   <script type="text/javascript">
-    window.iframe = document.createElement('iframe');
-    iframe.setAttribute('src',         'default/index.html');
-    iframe.setAttribute('id',          'app');
-    iframe.setAttribute('name',        'app');
-    iframe.setAttribute('width',       '320');
-    iframe.setAttribute('height',      '480');
-    iframe.setAttribute('scrolling',   'auto');
-    iframe.setAttribute('frameborder', '0');
+    dominator.load({
+        src:         'default/index.html',
+        id:          'app',
+        name:        'app',
+        width:       '320',
+        height:      '480',
+        scrolling:   'auto',
+        frameborder: '0'
+    });
   </script>
-  <script type="text/javascript" src="js/runner.js"></script>
 
   <!-- tests -->
   <script type="text/javascript" src="js/unit/dominator.js"></script>
