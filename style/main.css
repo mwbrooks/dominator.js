@@ -1,0 +1,114 @@
+
+body {
+    background-color:#e2f7ff;
+    font-family:'DejaVuSansMonoBook', Helvetica, Arial, FreeSans, sans-serif;
+    margin:0px;
+    padding:0px;
+}
+
+article,
+header,
+section {
+    display:block;
+}
+
+/* HEADER */
+
+header {
+    background:url(image/border.png) 0% 100% repeat-x,
+               url(image/redrobot.png) 95% 50px no-repeat;
+    height:555px;
+    z-index:-1;
+}
+
+header pre {
+    float:left;
+    font-size:24px;
+    line-height:1.5em;
+    margin-top:225px;
+    /* text-shadow:0px 0px 5px #666666; */
+}
+
+article > header,
+article > section {
+    padding-left:75px;
+}
+
+article > section {
+    background-color:#000000;
+    color:#ffffff;
+    font-size:15px;
+    font-weight:normal;
+    line-height:1.67em;
+    padding-bottom:55px;
+    padding-top:55px;
+}
+
+a {
+    color:#FFFFFF;
+    text-decoration:underline;
+}
+
+code .keyword              { color: #EDF0D1; }
+code .string, code .regexp { color: #85C5DC; }
+code .class, code .special { color: #E66C60; }
+code .number               { color: #FFB17A; }
+code .comment              { color: #878989; }
+
+header code .string  { color: #468ACE; }
+header code .special { color: #B91200; }
+
+article > section * {
+    max-width:650px;
+}
+
+article > section:nth-child(odd) {
+    background-color:#111111;
+    border-bottom:1px solid #333;
+    border-top:1px solid #222;
+}
+
+section h1,
+section h2{
+    font-weight:normal;
+    line-height:1.67em;
+    margin:0px;
+    padding:0px;
+    text-shadow: 0px 1px 1px #444444;
+}
+
+section h1 { font-size:36px; }
+section h2 { font-size:22px; margin-top:1em; }
+
+section p {
+    margin:1em 0px;
+}
+
+pre {
+    line-height:1.3em;
+    margin:1em 0px;
+    padding:0px 1.3em;
+}
+
+article > section:nth-child(even) pre {
+    background-color:#111111;
+    border:1px dashed #222222;
+    box-shadow:0px 0px 10px #111111;
+    -moz-box-shadow:0px 0px 10px #111111;
+    -webkit-box-shadow:0px 0px 10px #111111;
+}
+
+article > section:nth-child(odd) pre {
+    background-color:#000000;
+    border:1px dashed #222222;
+    box-shadow:0px 0px 10px #000000;
+    -moz-box-shadow:0px 0px 10px #000000;
+    -webkit-box-shadow:0px 0px 10px #000000;
+}
+
+article > section hr {
+    border-color:#222222;
+    border-style:solid;
+    border-width:5px 0px 0px 0px;
+    margin-left:0px;
+}

@@ -1,92 +1,289 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
+    <meta charset='utf-8'>
 
-  <title>mwbrooks/dominator.js @ GitHub</title>
+    <title>Dominator.js @ github.com/mwbrooks</title>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #04361e;
-      font-family: "Helvetica,Arial,FreeSans";
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #fbc9e1; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #fbc9e1; }
-    h3 { text-align: center; color: #fbc9e1; }
-    a { color: #fbc9e1; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+    <link rel="stylesheet" type="text/css" href="style/dejavu-sans-mono/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="style/main.css" />
+
 </head>
 
 <body>
-  <a href="http://github.com/mwbrooks/dominator.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <article>
+        <header>
+<pre>
+<code>
+dominator.open('#home')
+         .click('a.redButton')
+         .waitForPage('#boom')
+         .destroy();
+</code>
+</pre>
+        </header>
 
-  <div id="container">
+        <section id="synopsis">
+            <h1>Synopsis</h1>
+            <p>Dominator is a <a href="http://en.wikipedia.org/wiki/Functional_testing">functional test</a> library for the browser.</p>
+            <p>Simply, it adds adds helpful and chainable methods to <a href="http://docs.jquery.com/Qunit">QUnit</a>.
+               The API is designed to be readable and customizable to your web framework.</p>
+            <hr />
+            <p>Here is an example of a QUnit project using <code>dominator.js</code>:</p>
+<pre>
+<code>
+<span class="comment">&lt;!-- test framework (load QUnit first) --&gt;</span>
+&lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="dominator.js"&gt;&lt;/script&gt;
 
-    <div class="download">
-      <a href="http://github.com/mwbrooks/dominator.js/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/mwbrooks/dominator.js/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
+<span class="comment">&lt;!-- load application to test --&gt;</span>
+&lt;script type="text/javascript"&gt;
+    dominator.load({
+        src:         '../index.html',
+        id:          'app',
+        name:        'app',
+        width:       '320',
+        height:      '480',
+        scrolling:   'auto',
+        frameborder: '0'
+    });
+&lt;/script&gt;
 
-    <h1><a href="http://github.com/mwbrooks/dominator.js">dominator.js</a>
-      <span class="small">by <a href="http://github.com/mwbrooks">mwbrooks</a></span></h1>
+<span class="comment">&lt;!-- tests --&gt;</span>
+&lt;script type="text/javascript" src="tests.js"&gt;&lt;/script&gt;
+</code>
+</pre>
+            <p>... and here are the Dominator assertions in <code>tests.js</code>:</p>
+<pre>
+<code>
+dominator.test(function() {
 
-    <div class="description">
-      A functional test library to dominated the DOM.
-    </div>
+    module('open');
 
-    <p>Easily extend to support your own application structure.
+    test('should open first page', function() {
+        dominator.open('#home')
+                 .waitForPage('#home')
+                 .destroy();
+    });
 
-Built-in support for:
+    module('settings');
 
-- Bare HTML
-- jQTouch</p><h2>Dependencies</h2>
-<p>qUnit</p>
-<h2>Authors</h2>
-<p>Michael Brooks (michael@michaelbrooks.ca)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Michael Brooks (mikeywbrooks@gmail.com)<br/>      </p>
+    test('should save settings', function() {
+        dominator.open('#settings')
+                 .click('#save')
+                 .waitForEvent('document', 'settingsChange');
+                 .destroy();
 
+});
+</code>
+</pre>
+        </section>
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/mwbrooks/dominator.js/zipball/master">zip</a> or
-      <a href="http://github.com/mwbrooks/dominator.js/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/mwbrooks/dominator.js</pre>
-    </p>
+        <section id="installing">
+            <h1>Installing</h1>
+            <p><code>dominator.js</code> should be included immediately <em>after</em> <code>qunit.js</code>.</p>
+            <p>It will create the object <code>dominator</code> in the global scope.</p>
+<pre>
+<code>
+&lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="dominator.js"&gt;&lt;/script&gt;
 
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/mwbrooks/dominator.js">mwbrooks/dominator.js</a>
-    </div>
+console.log(typeof dominator);
+// returns "object"
+</code>
+</pre>
+            <p>You will probably want to customize Dominator for your own web framework.</p>
+            <p>Just include your extension <em>after</em> <code>dominator.js</code>.</p>
+<pre>
+<code>
+&lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="dominator.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="dominator.jqtouch.js"&gt;&lt;/script&gt;
+</code>
+</pre>
+        </section>
 
-  </div>
+        <section id="guide">
+            <h1>Guide</h1>
+            <p>Describe the application loader, tests loader, and test runner here.</p>
+        </section>
 
-  <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-21515431-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+        <section id="reference">
+            <h1>Reference</h1>
+
+            <h2 id="application-loader">Application Loader</h2>
+<pre>
+<code>
+//
+// this is a convience function to load your
+// application to be tested.
+// the arguments are attributes to an &lt;iframe&gt;
+//
+dominator.load({
+    src:         '../index.html',
+    id:          'app',
+    name:        'app',
+    width:       '320',
+    height:      '480',
+    scrolling:   'auto',
+    frameborder: '0'
+});
+</code>
+</pre>
+            <h2>Test Loader</h2>
+            <p>Your QUnit test are loaded by Dominator. I know, it's not ideal.</p>
+<pre>
+<code>
+//
+// load the QUnit test cases
+// Dominator will add the tests to
+// QUnit at runtime
+//
+// you can call dominator.test multiple times
+// to add more tests
+//
+dominator.test(function() {
+
+    module('open');
+
+    test('should open first page', function() {
+        dominator.open('#home')
+                 .waitForPage('#home')
+                 .destroy();
+    });
+
+    // ...
+
+});
+</code>
+</pre>
+            <h2>Test Runner</h2>
+            <p>When your application and tests have been loaded, then you can safetly begin the tests.</p>
+            <p>If you use the <a href="#application-loader">Application Loader</a> then you do not need to call the test function.</p>
+<pre>
+<code>
+dominator.test();
+</code>
+</pre>
+            <h2>Assertions</h2>
+<pre>
+<code>
+// dominator.jqtouch.js
+
+dominator.open('#home')
+
+dominator.click('#home a.button')
+
+dominator.waitForVisible('#home .notification')
+
+dominator.waitForNotVisible('#home .error')
+
+dominator.waitForEvent('#home a.button', 'touchend')
+
+dominator.waitForPage('#settings')
+</code>
+</pre>
+            <h2>Running Assertions</h2>
+<pre>
+<code>
+// all test must begin with dominator
+// and end with destroy()
+
+dominator.open('#home').destroy();
+
+// any number of asserts can be chained together
+
+dominator.open('#home')
+         .click('.button')
+         .waitForPage('#settings')
+         .destroy();
+</code>
+</pre>
+        </section>
+
+        <section id="customizing">
+            <h1>Customizing</h1>
+<pre>
+<code>
+//
+// add or override assertions
+// the final argument must always be 
+// a callback function
+//
+dominator.extend('tap', function(id, callback) {
+    x$(id).trigger('mousedown');
+    callback();
+});
+
+//
+// expect(count)
+//
+// set the expect count if QUnit
+// should expect a certain number of
+// assertions
+//
+// typically, expect is used within extend
+//
+// expect will auto-increment the existing
+// expect count, so there is no need to worry
+// about clobbering a preset value
+//
+dominator.extend('tap', function(id, callback) {
+    this.expect(1);
+
+    if (x$(id).length > 0) ok(true, 'found at least one ' + id);
+
+    x$(id).trigger('mousedown');
+    callback();
+});
+
+//
+// window
+//
+// while testing, you will need a handle
+// to the application window.
+//
+// the value is set using:
+//    dominator.config.window = window;
+//
+// within an extend command, window can be
+// referenced using:
+//    this.window
+//
+dominator.extend('tap', function(id, callback) {
+    this.window.x$(id).trigger('tap');
+    callback();
+});
+</code>
+</pre>
+        </section>
+
+        <section id="contribute">
+            <h1>Contribute</h1>
+        </section>
+
+        <section id="acknowledgement">
+            <h1>Acknowledgement</h1>
+        </section>
+
+        <footer>
+        </footer>
+    </article>
+
+    <a href="http://github.com/mwbrooks/dominator.js">
+        <img style="position: absolute; top: 0; left: 0; border: 0;" src="style/image/ribbon.png" alt="Fork me on GitHub">
+    </a>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-21515431-1");
+            pageTracker._trackPageview();
+        } catch(err) {}
+    </script>
+    <script type="text/javascript" src="js/hijs.js"></script>
 </body>
 </html>
