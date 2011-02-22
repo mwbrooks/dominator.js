@@ -29,7 +29,7 @@ dominator.open('#home')
             <p>Simply, it adds adds helpful and chainable methods to <a href="http://docs.jquery.com/Qunit">QUnit</a>.
                The API is designed to be readable and customizable to your web framework.</p>
             <hr />
-            <p>Here is an example of a QUnit project using <code>dominator.js</code>:</p>
+            <p>Here is an example of a QUnit project using Dominator:</p>
 <pre>
 <code>
 <span class="comment">&lt;!-- test framework (load QUnit first) --&gt;</span>
@@ -53,27 +53,24 @@ dominator.open('#home')
 &lt;script type="text/javascript" src="tests.js"&gt;&lt;/script&gt;
 </code>
 </pre>
-            <p>... and here are the Dominator assertions in <code>tests.js</code>:</p>
+            <p>and the QUnit assertions:</p>
 <pre>
 <code>
-dominator.test(function() {
+module('open');
 
-    module('open');
+test('should open first page', function() {
+    dominator.open('#home')
+             .waitForPage('#home')
+             .destroy();
+});
 
-    test('should open first page', function() {
-        dominator.open('#home')
-                 .waitForPage('#home')
-                 .destroy();
-    });
+module('settings');
 
-    module('settings');
-
-    test('should save settings', function() {
-        dominator.open('#settings')
-                 .click('#save')
-                 .waitForEvent('document', 'settingsChange');
-                 .destroy();
-
+test('should save settings', function() {
+    dominator.open('#settings')
+             .click('#save')
+             .waitForEvent('document', 'settingsChange');
+             .destroy();
 });
 </code>
 </pre>
