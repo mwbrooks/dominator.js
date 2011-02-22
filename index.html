@@ -32,7 +32,7 @@ dominator.open('#home')
 
         <section id="usage">
             <h1>Usage</h1>
-            <p>A simple example of a QUnit project using Dominator:</p>
+            <p>Here is a QUnit project using Dominator:</p>
 <pre>
 <code>
 <span class="comment">&lt;!-- test framework (load QUnit first) --&gt;</span>
@@ -81,20 +81,18 @@ test('should save settings', function() {
 
         <section id="installing">
             <h1>Installing</h1>
-            <h2>dominator.js</h2>
+            <h2>Dominator</h2>
 <pre>
 <code>
 <span class="comment">&lt;!-- include dominator.js after qunit.js --&gt;</span>
 &lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="dominator.js"&gt;&lt;/script&gt;
-
-console.log(typeof dominator); // returns "object"
 </code>
 </pre>
             <h2>Custom Dominators</h2>
-            <p>Simply include your extension <em>after</em> dominator.js:</p>
 <pre>
 <code>
+<span class="comment">&lt;!-- include custom dominators after dominator.js --&gt;</span>
 &lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="dominator.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="dominator.jqtouch.js"&gt;&lt;/script&gt;
@@ -104,7 +102,10 @@ console.log(typeof dominator); // returns "object"
 
         <section id="guide">
             <h1>Guide</h1>
-            <p>Describe the application loader, tests loader, and test runner here.</p>
+            <p>dominator in global scope</p>
+            <p>Chaining</p>
+            <p>Running tests with QUnit.start();</p>
+            <p>Configuration</p>
         </section>
 
         <section id="reference">

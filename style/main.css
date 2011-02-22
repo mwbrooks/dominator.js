@@ -47,9 +47,10 @@ article > section {
     padding-top:55px;
 }
 
-a {
-    color:#FFFFFF;
-    text-decoration:underline;
+section a {
+    color:#fbfccb;
+    border-bottom:1px dashed #fbfccb;
+    text-decoration:none;
 }
 
 code .keyword              { color: #EDF0D1; }
