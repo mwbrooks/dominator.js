@@ -129,41 +129,6 @@ dominator.load({
 });
 </code>
 </pre>
-            <h2>Test Loader</h2>
-            <p>Your QUnit test are loaded by Dominator. I know, it's not ideal.</p>
-<pre>
-<code>
-//
-// load the QUnit test cases
-// Dominator will add the tests to
-// QUnit at runtime
-//
-// you can call dominator.test multiple times
-// to add more tests
-//
-dominator.test(function() {
-
-    module('open');
-
-    test('should open first page', function() {
-        dominator.open('#home')
-                 .waitForPage('#home')
-                 .destroy();
-    });
-
-    // ...
-
-});
-</code>
-</pre>
-            <h2>Test Runner</h2>
-            <p>When your application and tests have been loaded, then you can safetly begin the tests.</p>
-            <p>If you use the <a href="#application-loader">Application Loader</a> then you do not need to call the test function.</p>
-<pre>
-<code>
-dominator.test();
-</code>
-</pre>
             <h2>Assertions</h2>
 <pre>
 <code>
@@ -180,22 +145,6 @@ dominator.waitForNotVisible('#home .error')
 dominator.waitForEvent('#home a.button', 'touchend')
 
 dominator.waitForPage('#settings')
-</code>
-</pre>
-            <h2>Running Assertions</h2>
-<pre>
-<code>
-// all test must begin with dominator
-// and end with destroy()
-
-dominator.open('#home').destroy();
-
-// any number of asserts can be chained together
-
-dominator.open('#home')
-         .click('.button')
-         .waitForPage('#settings')
-         .destroy();
 </code>
 </pre>
         </section>
@@ -257,12 +206,20 @@ dominator.extend('tap', function(id, callback) {
 </pre>
         </section>
 
+        <section id="community">
+            <h1>Community</h1>
+        </section>
+
         <section id="contribute">
             <h1>Contribute</h1>
         </section>
 
         <section id="acknowledgement">
             <h1>Acknowledgement</h1>
+        </section>
+
+        <section id="license">
+            <h1>License</h1>
         </section>
 
         <footer>
