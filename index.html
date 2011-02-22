@@ -78,19 +78,18 @@ test('should save settings', function() {
 
         <section id="installing">
             <h1>Installing</h1>
-            <p><code>dominator.js</code> should be included immediately <em>after</em> <code>qunit.js</code>.</p>
-            <p>It will create the object <code>dominator</code> in the global scope.</p>
+            <h2>dominator.js</h2>
 <pre>
 <code>
+<span class="comment">&lt;!-- include dominator.js after qunit.js --&gt;</span>
 &lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="dominator.js"&gt;&lt;/script&gt;
 
-console.log(typeof dominator);
-// returns "object"
+console.log(typeof dominator); // returns "object"
 </code>
 </pre>
-            <p>You will probably want to customize Dominator for your own web framework.</p>
-            <p>Just include your extension <em>after</em> <code>dominator.js</code>.</p>
+            <h2>Custom Dominators</h2>
+            <p>Simply include your extension <em>after</em> dominator.js:</p>
 <pre>
 <code>
 &lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
