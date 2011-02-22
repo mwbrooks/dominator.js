@@ -23,7 +23,6 @@ header {
 }
 
 header pre {
-    display:none;
     float:left;
     font-size:24px;
     line-height:1.5em;
@@ -67,7 +66,7 @@ article > section * {
 }
 
 article > section:nth-child(odd) {
-    background-color:#111111;
+    background-color:#121212;
     border-bottom:1px solid #333;
     border-top:1px solid #222;
 }
