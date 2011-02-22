@@ -87,9 +87,14 @@ section p {
     margin:1em 0px;
 }
 
-pre {
+section pre {
     line-height:1.3em;
     margin:1em 0px;
+    padding:0px;
+}
+
+section pre code {
+    display:block;
     padding:0px 1.3em;
 }
 
