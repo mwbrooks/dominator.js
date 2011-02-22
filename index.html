@@ -28,15 +28,18 @@ dominator.open('#home')
             <p>Dominator is a <a href="http://en.wikipedia.org/wiki/Functional_testing">functional test</a> library for the browser.</p>
             <p>Simply, it adds adds helpful and chainable methods to <a href="http://docs.jquery.com/Qunit">QUnit</a>.
                The API is designed to be readable and customizable to your web framework.</p>
-            <hr />
-            <p>Here is an example of a QUnit project using Dominator:</p>
+        </section>
+
+        <section id="usage">
+            <h1>Usage</h1>
+            <p>A simple example of a QUnit project using Dominator:</p>
 <pre>
 <code>
 <span class="comment">&lt;!-- test framework (load QUnit first) --&gt;</span>
 &lt;script type="text/javascript" src="qunit.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="dominator.js"&gt;&lt;/script&gt;
 
-<span class="comment">&lt;!-- load application to test --&gt;</span>
+<span class="comment">&lt;!-- load application to test (optional) --&gt;</span>
 &lt;script type="text/javascript"&gt;
     dominator.load({
         src:         '../index.html',
