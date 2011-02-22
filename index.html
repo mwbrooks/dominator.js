@@ -56,7 +56,7 @@ dominator.open('#home')
 &lt;script type="text/javascript" src="tests.js"&gt;&lt;/script&gt;
 </code>
 </pre>
-            <p>and the QUnit assertions:</p>
+            <p>and the QUnit assertions in tests.js:</p>
 <pre>
 <code>
 module('open');
@@ -112,12 +112,18 @@ test('should save settings', function() {
             <h1>Reference</h1>
 
             <h2 id="application-loader">Application Loader</h2>
+            <p>An optional helper function to load the test application.</p>
 <pre>
 <code>
 //
-// this is a convience function to load your
-// application to be tested.
-// the arguments are attributes to an &lt;iframe&gt;
+// Convenience function to load an application into an &lt;iframe /&gt;
+//
+// Can be called before or after adding the QUnit tests.
+//
+// - Sets dominator.config.window
+// - Calls QUnit.start(); after the application has loaded
+//
+// @param options {Object} attributes to add to the &lt;iframe /&gt;
 //
 dominator.load({
     src:         '../index.html',
@@ -152,55 +158,68 @@ dominator.waitForPage('#settings')
 
         <section id="customizing">
             <h1>Customizing</h1>
+            <p>Every application is structured different.</p>
+            <p>This is why Dominator was designed for customization.</p>
+            <p>Feel free to override any existing assertion and add your own.</p>
+            <h2>Extend</h2>
 <pre>
 <code>
 //
-// add or override assertions
-// the final argument must always be 
-// a callback function
+// Add and Override Assertions
+//
+// Add your arguments that you need, such as `id`.
+// The final argument must be a callback function.
+// Call the callback when your assertion is complete.
+//
+// This example adds `dominator.tap("body a.button");`
+// and uses the XUI JavaScript library.
 //
 dominator.extend('tap', function(id, callback) {
-    x$(id).trigger('mousedown');
+    this.window.x$(id).trigger('mousedown');
     callback();
 });
-
+</code>
+</pre>
+            <h2>Window</h2>
+<pre>
+<code>
 //
-// expect(count)
+// Window Handle of Test Application
 //
-// set the expect count if QUnit
-// should expect a certain number of
-// assertions
+// While testing, you will need a handle to the
+// application window.
 //
-// typically, expect is used within extend
-//
-// expect will auto-increment the existing
-// expect count, so there is no need to worry
-// about clobbering a preset value
-//
-dominator.extend('tap', function(id, callback) {
-    this.expect(1);
-
-    if (x$(id).length > 0) ok(true, 'found at least one ' + id);
-
-    x$(id).trigger('mousedown');
-    callback();
-});
-
-//
-// window
-//
-// while testing, you will need a handle
-// to the application window.
-//
-// the value is set using:
+// The window value is set before running QUnit.start() with:
 //    dominator.config.window = window;
-//
-// within an extend command, window can be
-// referenced using:
-//    this.window
 //
 dominator.extend('tap', function(id, callback) {
     this.window.x$(id).trigger('tap');
+    callback();
+});
+</code>
+</pre>
+            <h2>Expect</h2>
+<pre>
+<code>
+//
+// Expect an Assertion Count
+//
+// Tells QUnit how many assertions should fire.
+//
+// Typically, expect is used within extend.
+//
+// Expect will auto-increment the existing
+// expectation count, so there is no need to worry
+// about clobbering a preset value.
+//
+dominator.extend('tap', function(id, callback) {
+    // 'tap' should fire on positive assertion
+    this.expect(1);
+
+    // 'tap' requires at least one tappable element
+    if (x$(id).length > 0) ok(true, 'found at least one ' + id);
+
+    x$(id).trigger('mousedown');
     callback();
 });
 </code>
