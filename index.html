@@ -102,10 +102,75 @@ test('should save settings', function() {
 
         <section id="guide">
             <h1>Guide</h1>
-            <p>dominator in global scope</p>
-            <p>Chaining</p>
-            <p>Running tests with QUnit.start();</p>
-            <p>Configuration</p>
+            <h2>Setup</h2>
+            <ol>
+                <li>Setup a QUnit project</li>
+                <li>Include script dominator.js</li>
+                <li>Load your application and tests</li>
+                <li>Run QUnit</li>
+            </ol>
+            <h2>Running QUnit</h2>
+            <p>QUnit's auto-run is disabled in order to allow your test application to load.</p>
+<pre>
+<code>
+// After loading the test and application
+// you can safely start QUnit
+QUnit.start();
+
+// For convenience, the application loader
+// will automatically call QUnit.start();
+dominator.load(options);
+</code>
+</pre>
+            <h2>Configuration</h2>
+            <p>The Dominator configuration is stored in <code>dominator.config</code>.</p>
+<pre>
+<code>
+// window {Object}
+//
+// The window handle to the test application.
+// This must be set before calling QUnit.start();
+//
+// This value is used by all Dominator assertions.
+//
+// See the Reference section for more detail.
+//
+dominator.config.window = DOMElement;
+
+// Feel free to pass any property or function
+// that you extensions may need
+//
+// For example:
+//
+dominator.config.postResults = function(value) {
+    // XHR POST results to a server
+};
+</code>
+</pre>
+            <h2>Using Dominator</h2>
+            <p>Dominator assertions are chainable and executed with <code>destroy();</code></p>
+<pre>
+<code>
+// Does nothing, but tries to run all queued assertions
+dominator.destroy();
+
+// Asserts that home page opened
+dominator.open('#home')
+         .destroy();
+
+// Asserts that:
+//   - home page opened
+//   - a button inside the home page was clicked
+dominator.open('#home')
+         .click('#home a.button')
+         .destroy();
+
+// Same as above
+dominator.open('#home');
+dominator.click('#home a.button');
+dominator.destroy();
+</code>
+</pre>
         </section>
 
         <section id="reference">
