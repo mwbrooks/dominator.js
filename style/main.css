@@ -123,3 +123,15 @@ article > section hr {
     border-width:5px 0px 0px 0px;
     margin-left:0px;
 }
+
+.zip,
+.tar {
+    background-image:url('image/zip.png');
+    border:0px;
+    display:inline-block;
+    height:142px;
+    width:144px;
+}
+.tar {
+    background-image:url('image/tar.png');
+}
