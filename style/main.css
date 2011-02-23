@@ -24,6 +24,7 @@ header {
 
 header pre {
     float:left;
+    font-family:Courier,monospace,sans-serif;
     font-size:24px;
     line-height:1.5em;
     margin-top:225px;
@@ -38,8 +39,8 @@ article > section {
 
 article > section {
     background-color:#000000;
-    color:#ffffff;
-    font-size:15px;
+    color:#EEEEEE;
+    font-size:14px;
     font-weight:normal;
     line-height:1.67em;
     padding-bottom:55px;
@@ -81,13 +82,15 @@ section h2{
 }
 
 section h1 { font-size:36px; }
-section h2 { font-size:22px; margin-top:1em; }
+section h2 { font-size:22px; font-weight:bold; margin-top:1em; }
 
 section p {
     margin:1em 0px;
 }
 
 section pre {
+    font-family:"DejaVuSansMonoBook", "Courier", monospace, sans-serif;
+    font-size:13px;
     line-height:1.3em;
     margin:1em 0px;
     padding:0px;
