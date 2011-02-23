@@ -118,10 +118,10 @@ article > section:nth-child(odd) pre {
 }
 
 article > section hr {
-    border-color:#222222;
+    border-color:#111111;
     border-style:solid;
     border-width:5px 0px 0px 0px;
-    margin-left:0px;
+    margin:25px 0px;
 }
 
 .zip,

@@ -108,75 +108,135 @@ test('should save settings', function() {
 </pre>
         </section>
 
-        <section id="guide">
-            <h1>Guide</h1>
-            <h2>Setup</h2>
-            <ol>
-                <li>Setup a QUnit project</li>
-                <li>Include script dominator.js</li>
-                <li>Load your application and tests</li>
-                <li>Run QUnit</li>
-            </ol>
-            <h2>Running QUnit</h2>
-            <p>QUnit's auto-run is disabled in order to allow your test application to load.</p>
+        <section id="getting-started">
+            <h1>Getting Started</h1>
+            <h2>Download QUnit</h2>
+            <p>Download <a href="http://docs.jquery.com/Qunit">QUnit</a> from <a href="http://github.com/jquery/qunit">github.com/jquery/qunit</a>.</p>
+            <hr/>
+            <h2>Download Dominator.js</h2>
+            <p>Go to the <a href="#downloading">Downloading section</a>.</p>
+            <hr/>
+            <h2>File Structure</h2>
+            <p>Feel free to keep your current application file structure. However, let's assume you are using something like this:</p>
+<pre>
+<code>
+<span class="comment">
+app/ ................... 
+app/index.html ......... Web application
+app/test/ .............. 
+app/test/index.html .... Test runner
+app/test/dominator/ .... Dominator.js
+app/test/qunit/ ........ QUnit
+app/test/tests/ ........ QUnit tests
+</span>
+</code>
+</pre>
+            <hr/>
+            <h2>Create a Test Page</h2>
+            <p>In /app/test/index.html:</p>
+<pre>
+<code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" type="text/css" href="qunit/qunit.css" /&gt;
+
+  <span class="comment">&lt;!-- test framework (load qUnit first) --&gt;</span>
+  &lt;script type="text/javascript" src="qunit/qunit.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="dominator/dominator.js"&gt;&lt;/script&gt;
+
+  <span class="comment">&lt;!-- load application to test --&gt;</span>
+  &lt;script type="text/javascript"&gt;
+    dominator.load({
+        src:         '../index.html',
+        id:          'app',
+        name:        'app',
+        width:       '320',
+        height:      '480',
+        scrolling:   'auto',
+        frameborder: '0'
+    });
+  &lt;/script&gt;
+
+  <span class="comment">&lt;!-- tests --&gt;</span>
+  &lt;script type="text/javascript" src="tests/home.test.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="tests/settings.test.js"&gt;&lt;/script&gt;
+
+  &lt;title&gt;App Tests&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 id="qunit-header"&gt;App Tests&lt;/h1&gt;
+  &lt;h2 id="qunit-banner"&gt;&lt;/h2&gt;
+  &lt;div id="qunit-testrunner-toolbar"&gt;&lt;/div&gt;
+  &lt;h2 id="qunit-userAgent"&gt;&lt;/h2&gt;
+  &lt;ol id="qunit-tests"&gt;&lt;/ol&gt;
+  &lt;div id="qunit-fixture"&gt;
+    <span class="comment">&lt;!-- populated dynamically --&gt;</span>
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+</pre>
+            <hr/>
+            <h2>Write Tests</h2>
+            <p>In /app/test/tests/home.test.js:</p>
+<pre>
+<code>
+module('open');
+
+test('should open home page', function() {
+    dominator.open('#home')
+             .waitForPage('#home')
+             .destroy();
+});
+
+test('should have a logo', function() {
+    dominator.open('#home')
+             .waitForVisible('#home .logo')
+             .destroy();
+});
+</code>
+</pre>
+            <p>In /app/test/tests/settings.test.js:</p>
+<pre>
+<code>
+module('settings');
+
+test('should save settings', function() {
+    dominator.open('#settings')
+             .click('#save')
+             .waitForEvent('document', 'settingsChange');
+             .destroy();
+});
+</code>
+</pre>
+
+            <hr/>
+            <h2>Run Tests</h2>
+            <p>Dominator assertions are chainable and executed with <code>destroy();</code></p>
+            <p>Open /app/test/index.html</p>
+            <hr/>
+            <h2>Manually Loading the App to Test (optional)</h2>
+            <p>If the default <code>dominator.load</code> implementaton is not doing it for you, then you can override it or not use it.</p>
+            <p>Just remember that Dominator disables QUnit's auto-run, so that you can wait for your application to load.</p>
 <pre>
 <code>
 // After loading the test and application
-// you can safely start QUnit
+// you can safely start QUnit with:
 QUnit.start();
-
-// For convenience, the application loader
-// will automatically call QUnit.start();
-dominator.load(options);
 </code>
 </pre>
-            <h2>Configuration</h2>
-            <p>The Dominator configuration is stored in <code>dominator.config</code>.</p>
+            <p>You could override the application loader like this:</p>
 <pre>
 <code>
-// window {Object}
-//
-// The window handle to the test application.
-// This must be set before calling QUnit.start();
-//
-// This value is used by all Dominator assertions.
-//
-// See the Reference section for more detail.
-//
-dominator.config.window = DOMElement;
+dominator.fn.load = function(some, custom, params) {
 
-// Feel free to pass any property or function
-// that you extensions may need
-//
-// For example:
-//
-dominator.config.postResults = function(value) {
-    // XHR POST results to a server
+    // do whatever you need to load the application
+
+    dominator.config.window = myApplicationWindow;
+
+    QUnit.start();
 };
-</code>
-</pre>
-            <h2>Using Dominator</h2>
-            <p>Dominator assertions are chainable and executed with <code>destroy();</code></p>
-<pre>
-<code>
-// Does nothing, but tries to run all queued assertions
-dominator.destroy();
-
-// Asserts that home page opened
-dominator.open('#home')
-         .destroy();
-
-// Asserts that:
-//   - home page opened
-//   - a button inside the home page was clicked
-dominator.open('#home')
-         .click('#home a.button')
-         .destroy();
-
-// Same as above
-dominator.open('#home');
-dominator.click('#home a.button');
-dominator.destroy();
 </code>
 </pre>
         </section>
@@ -224,6 +284,30 @@ dominator.waitForNotVisible('#home .error')
 dominator.waitForEvent('#home a.button', 'touchend')
 
 dominator.waitForPage('#settings')
+</code>
+</pre>
+            <h2>About Chaining</h2>
+            <p>Assertions are queued and executed with <code>destroy();</code>:</p>
+<pre>
+<code>
+// Does nothing, but tries to run all queued assertions
+dominator.destroy();
+
+// Asserts that home page opened
+dominator.open('#home')
+         .destroy();
+
+// Asserts that:
+//   - home page opened
+//   - a button inside the home page was clicked
+dominator.open('#home')
+         .click('#home a.button')
+         .destroy();
+
+// Same as above
+dominator.open('#home');
+dominator.click('#home a.button');
+dominator.destroy();
 </code>
 </pre>
         </section>
@@ -296,6 +380,50 @@ dominator.extend('tap', function(id, callback) {
 });
 </code>
 </pre>
+            <h2>Config</h2>
+            <p>The Dominator configuration is stored in <code>dominator.config</code>:</p>
+<pre>
+<code>
+// window {Object}
+//
+// The window handle to the test application.
+// This must be set before calling QUnit.start();
+//
+// This value is used by all Dominator assertions.
+//
+// See the Reference section for more detail.
+//
+dominator.config.window = DOMElement;
+
+// Feel free to pass any property or function
+// that you extensions may need
+//
+// For example:
+//
+dominator.config.postResults = function(value) {
+    // XHR POST results to a server
+};
+</code>
+</pre>
+            <h2>Fn</h2>
+            <p>Extend the dominator prototype:</p>
+<pre>
+<code>
+// Override Application Loader
+//   dominator.load({});
+//
+dominator.fn.load = function(options) {
+    // implementation
+};
+
+// Create Something New
+//   dominator.beep();
+//
+dominator.fn.beep = function() {
+    console.log('BOOM!!!');
+};
+</code>
+</pre>
         </section>
 
         <section id="community">
@@ -311,14 +439,17 @@ dominator.extend('tap', function(id, callback) {
         <section id="contribute">
             <h1>Contribute</h1>
             <h2>Improvements</h2>
-            <p>Please use the <a href="https://github.com/mwbrooks/dominator.js/issues">GitHub Issue Tracker</a> to report a bug or discuss a change.</p>
+            <p>Help me out by using the <a href="https://github.com/mwbrooks/dominator.js/issues">GitHub Issue Tracker</a> to report a bug and discuss changes.</p>
+            <hr/>
             <h2>Pull Requests</h2>
             <p>I appreciate pull requests!</p>
             <p>I appreciate them more when on topic branch, instead of the master branch.</p>
+            <hr/>
             <h2>Everything else</h2>
             <p>Here are a few ideas:</p>
             <ul>
                 <li>Minor Web design tweaks</li>
+                <li>Documentation</li>
                 <li>Usage feeback</li>
             </ul>
         </section>
