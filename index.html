@@ -25,9 +25,9 @@ dominator.open('#home')
 
         <section id="synopsis">
             <h1>Synopsis</h1>
-            <p>Dominator is a <a href="http://en.wikipedia.org/wiki/Functional_testing">functional test</a> library for the browser.</p>
-            <p>Simply, it adds adds helpful and chainable methods to <a href="http://docs.jquery.com/Qunit">QUnit</a>.
-               The API is designed to be readable and customizable to your web framework.</p>
+            <p>Dominator adds <a href="http://en.wikipedia.org/wiki/Functional_testing">functional test</a> assertions to <a href="http://docs.jquery.com/Qunit">QUnit</a>.</p>
+            <p>Writing functional tests should be <a href="#example_tests">simple, readable</a>, and capable of <a href="#customizing">testing your home-brewed application</a>.</p>
+            <p>For us, functional testing is a smoke screen. If you need more, then it may be time to abstract and unit test.</p>
         </section>
 
         <section id="usage">
@@ -57,7 +57,7 @@ dominator.open('#home')
 </code>
 </pre>
             <p>and the QUnit assertions in tests.js:</p>
-<pre>
+<pre id="example_tests">
 <code>
 module('open');
 
