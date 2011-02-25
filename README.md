@@ -37,8 +37,8 @@ Example
                  .destroy();
     });
 
-More Detail
------------
+Usage
+-----
 
 [Dominator.js Homepage](http://mwbrooks.github.com/dominator.js/).
 
@@ -50,3 +50,23 @@ More Detail
 - [Contributing](http://mwbrooks.github.com/dominator.js/#contribute)
 - [Acknowledgements](http://mwbrooks.github.com/dominator.js/#acknowledgement)
 - [License](http://mwbrooks.github.com/dominator.js/#license)
+
+Support
+-------
+
+Currently, dominator.js only runs in WebKit browsers.
+
+Development
+-----------
+
+    $ git clone git://github.com/mwbrooks/dominator.js.git
+
+    $ cd dominator.js
+
+    $ git submodule init
+    $ git submodule update
+
+Running Tests
+-------------
+
+Open `test/index.html`
