@@ -59,6 +59,8 @@ Currently, dominator.js only runs in WebKit browsers.
 Development
 -----------
 
+### Getting the Source Code
+
     $ git clone git://github.com/mwbrooks/dominator.js.git
 
     $ cd dominator.js
@@ -66,7 +68,10 @@ Development
     $ git submodule init
     $ git submodule update
 
-Running Tests
--------------
+### Building the Source Code
+
+    $ make
+
+### Running Tests
 
 Open `test/index.html`
